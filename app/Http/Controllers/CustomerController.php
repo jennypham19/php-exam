@@ -16,6 +16,7 @@ class CustomerController extends Controller
         $search = $request->get('search');
         $listCustomer = Customer::where("name","like","%$search%")
                 ->orWhere("numberPhone","like","%$search%")
+                ->orWhere("email","like","%$search%")
                 ->paginate(5);
         return view('customers.index',[
             'listCustomer' => $listCustomer,
