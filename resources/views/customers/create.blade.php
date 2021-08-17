@@ -6,7 +6,7 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>Thêm Lớp</h1>
+	<h1>Thêm khách hàng</h1>
 	<form action="{{route('customers.store')}}" method="post">
 		@csrf
 		Tên: <input type="text" name="name"><br>
