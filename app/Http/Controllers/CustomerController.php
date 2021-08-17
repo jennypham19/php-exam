@@ -16,7 +16,6 @@ class CustomerController extends Controller
         $search = $request->get('search');
         $listCustomer = Customer::where("name","like","%$search%")
                 ->orWhere("numberPhone","like","%$search%")
-                ->orWhere("email","like","%$search%")
                 ->paginate(5);
         return view('customers.index',[
             'listCustomer' => $listCustomer,
@@ -42,16 +41,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $avatar = $request->get('avatar');
         $name = $request->get('name');
         $gender = $request->get('gender');
+        $address = $request->get('address');
         $phone = $request->get('phone');
         $email = $request->get('email');
         // ORM => Eloquent
         $customer = new Customer();
-        $customer->avatar = $avatar;
         $customer->name = $name;
         $customer->gender = $gender;
+        $customer->address = $address;
         $customer->numberPhone = $phone;
         $customer->email = $email;
         $customer->save();

@@ -16,24 +16,24 @@
                     <table border="1" cellspacing="0" cellpadding="1" class="table">
                         <tr>
                             <th>Mã</th>
-                            <th>Ảnh</th>
                             <th>Họ tên</th>
                             <th>Giới tính</th>
+                            <th>Địa chỉ</th>
                             <th>Số điện thoại</th>
                             <th>Email</th>
                         </tr>
                         @foreach ($listCustomer as $customer)
                             <tr>
                                 <td> {{ $customer->id }} </td>
-                                <td> {{ $customer->avatar }} </td>
                                 <td> {{ $customer->name }} </td>
                                 <td> {{ $customer->NameGender }} </td>
+                                <td> {{ $customer->address }} </td>
                                 <td> {{ $customer->numberPhone }} </td>
                                 <td> {{ $customer->email }} </td>
                             </tr>
                         @endforeach
                     </table>
-					{{ $listCustomer->links() }}
+					{{ $listCustomer->appends(['search' => $search])->links('pagination::bootstrap-4') }}
                 </div>
             </div>
 
